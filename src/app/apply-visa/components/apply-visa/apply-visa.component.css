@@ -1,0 +1,15 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.filters {
+  margin: 10px 0;
+}
+
+.filters span {
+  margin: 5px;
+  padding: 2px;
+  background: whitesmoke;
+  border-radius: 6px;
+  
+}
+.filters:hover {
+  cursor: pointer;
+}
