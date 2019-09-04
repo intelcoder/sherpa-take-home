@@ -7,7 +7,7 @@ import { Action, Store, select } from '@ngrx/store'
 
 import { ApplyVisaModuleType } from '../reducers';
 import * as entryRequirementsActions from '../reducers/entry-requirements/actions';
-import { EntryRequirementsService } from '../services/entryRequirements';
+import { EntryRequirementsService } from '../services/entry-requirements.service';
 
 
 @Injectable()

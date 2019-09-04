@@ -1,10 +1,12 @@
-import { ApplyVisaModuleType } from './../../reducers/index';
+
 import { Store, select } from '@ngrx/store';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApplyVisaModuleType } from './../../reducers/index';
 import { EntryRequirementType, EntryRequirementListType } from '../../reducers/entry-requirements/types';
 import { selectEntryRequirementList } from '../../reducers/entry-requirements/selectors';
-import { selectEntryRequirements } from '../../reducers/index';
+import { selectEntryRequirements, selectLocalization } from '../../reducers/index';
 
 @Component({
   selector: 'app-requirement-card',
@@ -19,6 +21,9 @@ export class RequirementCardComponent implements OnInit {
       const { entryRequirements, isFetching } = entryRequirementState
       this.requirements = entryRequirements
       this.isFetching = isFetching
+    })
+    this.store.pipe(select(selectLocalization)).subscribe(data => {
+      console.log(data)
     })
 
    }

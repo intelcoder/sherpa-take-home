@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import querystring from 'querystring'
-import { Observable, forkJoin, empty } from 'rxjs';
+import { forkJoin, empty } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environment';
 import { map } from 'rxjs/operators'
-import { citizenships } from '../components/apply-visa/inputData';
 
 
 @Injectable({

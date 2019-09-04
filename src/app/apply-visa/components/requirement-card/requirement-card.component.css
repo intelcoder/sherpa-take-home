@@ -14,3 +14,7 @@
   margin-top: 20px;
   padding-bottom :20px;
 }
+
+.spinner-container ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #3F51B5;
+}

@@ -2,12 +2,13 @@ import { Store, select } from '@ngrx/store';
 import { Component, OnInit, OnDestroy  } from '@angular/core'
 import { languages, citizenships, itineraries } from './inputData'
 import { ApplyVisaModuleType, selectEntryRequirements, selectTravelInfo } from '../../reducers/index';
-import { EntryRequirementsService } from '../../services/entryRequirements';
+import { EntryRequirementsService } from '../../services/entry-requirements.service';
 import * as entryRequirementsSelectors from '../../reducers/entry-requirements/selectors';
 import { updateCitizenShip, updateLanguage, updateItineraries } from '../../reducers/travel-info/actions';
 import { Observable, Subscription } from 'rxjs';
 import * as travelInfoSelectors from '../../reducers/travel-info/selectors';
 import { checkEntryRequirements } from '../../reducers/entry-requirements/actions';
+import { loadLocalization } from '../../reducers/localization/actions';
 @Component({
   selector: 'app-apply-visa',
   templateUrl: './apply-visa.component.html',
@@ -89,7 +90,7 @@ export class ApplyVisaComponent implements OnInit, OnDestroy {
  
 
   public subscription: Subscription;
-
+  public languageSub: Subscription;
   constructor(
       private _entryRequirementsService: EntryRequirementsService,
       public store: Store<ApplyVisaModuleType>
@@ -101,11 +102,18 @@ export class ApplyVisaComponent implements OnInit, OnDestroy {
     this.subscription = this.store
       .pipe(select(travelInfoSelectors.selectFieldForEntryRequirements))
       .subscribe(state => {
-        this.store.dispatch(checkEntryRequirements(state))
+        // this.store.dispatch(checkEntryRequirements(state))
       })
+
+    this.languageSub = this.store
+    .pipe(select(travelInfoSelectors.selectLanaugage))
+    .subscribe(state => {
+      this.store.dispatch(loadLocalization({language: state}))
+    })
   }
   ngOnDestroy() {
     this.subscription.unsubscribe()
+    this.languageSub.unsubscribe()
   }
   public updateLanguage(langauge: string) {
     this.store.dispatch(updateLanguage({langauge}))
