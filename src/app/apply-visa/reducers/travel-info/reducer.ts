@@ -1,7 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store'
-import * as travelInfoActions from './actions'
-import { TravelInfoType } from './types'
-import { itineraries } from '../../components/apply-visa/inputData';
+import { Action, createReducer, on } from '@ngrx/store';
+import * as travelInfoActions from './actions';
+import { TravelInfoType } from './types';
 
 export const initialState: TravelInfoType = {
   affiliateId: 'icelandair',
@@ -52,11 +51,10 @@ export const initialState: TravelInfoType = {
 export const visaCheckerReducer = createReducer(
   initialState,
   on(travelInfoActions.checkVisa, (state, action) => {
-    console.log(action);
-    return ({...state})
+    return ({...state});
   }),
   on(travelInfoActions.updateCitizenShip, (state, action) => {
-    return ({...state, defaultNationalityCountry: action.citizenship})
+    return ({...state, defaultNationalityCountry: action.citizenship});
   }),
   on(travelInfoActions.updateLanguage, (state, action) => ({...state, language: action.langauge})),
   on(travelInfoActions.updateItineraries, (state, action) => ({...state, itinerary: action.newItineraries })),
@@ -65,4 +63,4 @@ export const visaCheckerReducer = createReducer(
 export function reducer(state: TravelInfoType | undefined, action: Action) {
   return visaCheckerReducer(state, action);
 }
-export const visaCheckerFeatureKey = 'visaChecker'
+

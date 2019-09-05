@@ -12,16 +12,16 @@ import { map } from 'rxjs/operators'
 export class LocalizationService {
   public baseUrl = `https://sdk-staging.joinsherpa.io/cdn/localization/`
   constructor(private http: HttpClient) { }
-  checkRequirements({language}) {
+  fetchLocalizationData({language}) {
     if(language) {
-      return this.http.get<any>(`${this.baseUrl}${language.toLowerCase()}.json`)
+      return this.http.get<any>(`${this.baseUrl}${language.toLowerCase()}.json`);
     }
     return empty()
     .pipe(
       map(result => {
-        return result
+        return result;
       })
-    )
+    );
   }
 
-}
+};

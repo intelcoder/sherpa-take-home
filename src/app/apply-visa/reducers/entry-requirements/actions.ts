@@ -1,6 +1,6 @@
 import { createAction, props  } from '@ngrx/store'
 import { EntryRequirementType } from './types'
-import { citizenships, itineraries } from '../../components/apply-visa/inputData';
+
 import { ItineraryType } from '../travel-info/types';
 
 interface CheckEntryRequirementPayload {

@@ -12,19 +12,20 @@ import { LocalizationService } from '../services/localization.service';
 @Injectable()
 export class ApplyVisaLocalization {
   @Effect()
-  loadOnLanguageUpdate: Observable<Action> = 
+  loadOnLanguageUpdate: Observable<Action> =
     this.actions$.pipe(
       ofType(localizationActions.loadLocalization),
       switchMap((action) => {
         return this.entryRequirementsService
-        .checkRequirements(action)
+        .fetchLocalizationData(action)
         .pipe(
           map(data => {
-            const countries = data.countries
-            const countriesMap = countries.map(country => country.alpha_2)
-      
-              console.log({...data, countriesMap})
-           return localizationActions.loadLocalizationSuccess({...data, countriesMap});
+            const countries = data.countries || {}
+            const countriesMap = countries.reduce((acc, country) => {
+                acc[country.alpha_2] = country;
+                return acc;
+            }, {});
+            return localizationActions.loadLocalizationSuccess({...data, countriesMap});
           }))
       }),
     )

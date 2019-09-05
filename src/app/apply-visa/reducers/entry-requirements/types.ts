@@ -49,4 +49,4 @@ export interface EntryRequirementType {
 export interface EntryRequirementListType {
   isFetching: boolean,
   entryRequirements: EntryRequirementType[],
-}
+};

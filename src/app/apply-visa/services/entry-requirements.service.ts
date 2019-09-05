@@ -22,10 +22,12 @@ export class EntryRequirementsService {
           destination: it.destinationCountry,
           affiliateId,
           key: environment.apiKey,
-         })
-         if(reqUrl) return this.http.get<any>(this.baseUrl + reqUrl)
-      })
-      return forkJoin(requestMap)
+         });
+         if(reqUrl) {
+           return this.http.get<any>(this.baseUrl + reqUrl);
+         }
+      });
+      return forkJoin(requestMap);
     }
     return empty()
     .pipe(
@@ -35,12 +37,12 @@ export class EntryRequirementsService {
     )
   }
   buildEntryRequirementsUrl(payloadObj): string {
-    let requestUrl = ''
+    let requestUrl = '';
     try {
       requestUrl = '?' + querystring.stringify(payloadObj)
     } catch(e) {
-      console.log(e)
+      console.log(e);
     }
-    return requestUrl
+    return requestUrl;
   }
 }

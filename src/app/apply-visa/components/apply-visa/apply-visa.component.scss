@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+
+.themes {
+  margin: 16px 0;
+  display: flex;
+  div {
+    margin: 0 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+.filters {
+  margin: 10px 0;
+}
+
+.filters span {
+  margin: 5px;
+  padding: 2px;
+  background: whitesmoke;
+  border-radius: 6px;
+  
+}
+.filters:hover {
+  cursor: pointer;
+}
+.filterContainer {
+  margin-bottom: 20px;
+}

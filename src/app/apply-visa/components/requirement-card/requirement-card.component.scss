@@ -1,4 +1,4 @@
-.requirement-card {
+.requirementCard {
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #d0c4c4;
@@ -15,6 +15,6 @@
   padding-bottom :20px;
 }
 
-.spinner-container ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+.spinnerContainer ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
   stroke: #3F51B5;
 }

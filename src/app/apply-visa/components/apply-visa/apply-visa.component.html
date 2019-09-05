@@ -1,19 +1,24 @@
 Apply Visa Page
-<div class="filters">
-  <span (click)="updateLanguage(lang)" *ngFor="let lang of languages;">
-    {{lang}}
-  </span>
-</div>
-<div class="filters">
-  <span (click)="updateItinerary(itinerary)" *ngFor="let itinerary of itineraryList;">
-    {{itinerary.name}}
-  </span>
-</div>
+<div class="{{themeName + '-theme'}}">
+  <div class="themes">
+    <div (click)="setTheme('air-canada')">air canada</div>
+    <div (click)="setTheme('g-advanture')">g advanture</div>
+  </div>
+  <div class="filters" >
+    <span (click)="updateLanguage(lang)" *ngFor="let lang of languages;">
+      {{lang}}
+    </span>
+  </div>
+  <div class="filters">
+    <span (click)="updateItinerary(itinerary)" *ngFor="let itinerary of itineraryList;">
+      {{itinerary.name}}
+    </span>
+  </div>
 
-<div class="filters">
-  <span (click)="updateCitizenship(citizenship)" *ngFor="let citizenship of citizenships;">
-    {{citizenship}}
-  </span>
+  <div class="filters">
+    <span (click)="updateCitizenship(citizenship)" *ngFor="let citizenship of citizenships;">
+      {{citizenship}}
+    </span>
+  </div>
 </div>
-
 <app-requirement-card></app-requirement-card>

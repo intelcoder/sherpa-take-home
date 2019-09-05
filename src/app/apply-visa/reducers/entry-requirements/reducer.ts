@@ -6,7 +6,7 @@ import * as entryRequirementsActions from './actions'
 export const initialState: EntryRequirementListType = {
   entryRequirements: [],
   isFetching: false,
-}
+};
 
 export const entryRequirementReducer = createReducer(
   initialState,
@@ -14,18 +14,17 @@ export const entryRequirementReducer = createReducer(
     return {
       ...state,
       isFetching: true,
-    }
+    };
   }),
   on(entryRequirementsActions.checkEntryRequirementsSuccess, (state, action) => {
-    console.log(action)
-    const { requirements } = action
+    const { requirements } = action;
     return {
       ...state,
       isFetching: false,
       entryRequirements: requirements,
-    }
+    };
   })
-)
+);
 
 export function reducer(state: EntryRequirementListType | undefined, action: Action) {
   return entryRequirementReducer(state, action);

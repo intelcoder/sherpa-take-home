@@ -1,16 +1,15 @@
 
-<div class="spinner-container" *ngIf="isFetching; else requirementCards">
+<div class="spinnerContainer" *ngIf="isFetching; else requirementCards">
   <mat-spinner diameter="20" color="warn"></mat-spinner>
 </div>
 
 <ng-template #requirementCards>
   <div *ngFor="let requirement of (requirements)">
 
-    <div class="requirement-card" *ngFor="let visa of requirement.visa">
-      <div>{{visa.country2}}</div>
+    <div class="requirementCard" *ngFor="let visa of requirement.visa">
+      <div>{{countriesMap[visa.country2] ? countriesMap[visa.country2].name : visa.country2}}</div>
       
       <div>Allow to stay {{visa.allowedStay}}</div>
-    
         <div *ngIf="visa.textual">
           <span *ngFor="let text of (visa.textual.text.slice(0, 2))">
             {{text}}
@@ -18,7 +17,7 @@
         </div>
         <div *ngIf="visa.availableVisas && visa.availableVisas.length > 0">
           <div class="btnContainer" *ngFor="let availableVisa of visa.availableVisas">
-            <a class="applyNow" href={{availableVisa.productRedirectUrl}}>Apply Now</a>
+            <a class="applyNow" href={{availableVisa.productRedirectUrl}}>{{localization.applyBtn || 'Apply Now'}}</a>
           </div>
         </div>
 

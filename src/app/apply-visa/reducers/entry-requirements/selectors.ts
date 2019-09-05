@@ -4,5 +4,5 @@ import { selectEntryRequirements } from '../index';
 export const selectEntryRequirementList = createSelector(
   selectEntryRequirements,
   state => state.entryRequirements,
-)
+);
 

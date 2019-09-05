@@ -1,6 +1,5 @@
 import { selectTravelInfo } from '../index';
 import { createSelector } from '@ngrx/store';
-import { itineraries } from '../../components/apply-visa/inputData';
 
 
 export const selectLanaugage = createSelector(
@@ -16,7 +15,7 @@ export const selectDefaultNationality = createSelector(
 export const selectFieldForEntryRequirements = createSelector(
   selectTravelInfo,
   state => {
-    const { defaultNationalityCountry, language, itinerary, affiliateId } = state
+    const { defaultNationalityCountry, language, itinerary, affiliateId } = state;
     return {
       citizenship: defaultNationalityCountry,
       language,
